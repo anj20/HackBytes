@@ -1,8 +1,14 @@
 import React from "react";
-import { GlobalState } from "./Context/GlobalState";
+import Hero from "./Components/Hero";
+import Navbar from "./Components/Navbar";
 
 const App = () => {
-  return <div></div>;
+  return (
+    <div>
+      <Navbar />
+      <Hero />
+    </div>
+  );
 };
 
 export default App;
