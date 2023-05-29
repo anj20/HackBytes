@@ -1,4 +1,5 @@
 import React from "react";
+import Auth0LoginButton from "./Auth0LoginButton";
 
 const Navbar = () => {
   return (
@@ -13,6 +14,7 @@ const Navbar = () => {
           <span class="navbar-brand">DollarSense</span>
         </a>
         <div class="flex md:order-2">
+          <Auth0LoginButton />
           <button
             type="button"
             class="px-4 py-2 mr-3 md:mr-0 btn btn-primary md:btn-secondary"
