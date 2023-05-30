@@ -15,13 +15,13 @@ const Hero = () => {
           <div className="md:w-1/2 pr-4 pl-4">
             <div className="copy" data-aos="fade-up" data-aos-duration="3000">
               <div className="text-label">
-                Change your buisness with DollarSense
+              Navigate Your Finances, Find Balance, and Flourish Financially!
               </div>
               <div className="text-hero-bold">
-                Grow up your buisness with DollarSense
+              Empower Your Financial Journey with Dollar Sense.
               </div>
               <div className="text-hero-regular">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+              The Key to Your Financial Success - Track, Budget, and Prosper!
               </div>
               <div className="cta">
                 <a

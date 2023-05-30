@@ -2,6 +2,7 @@ import React from "react";
 import Hero from "./Components/Hero";
 import Dashboard from "./Components/Dashboard";
 import Navbar from "./Components/Navbar";
+import About from "./Components/About";
 import { useLocation, Routes, Route } from "react-router-dom";
 
 const App = () => {
@@ -11,6 +12,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Hero />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/About" element={<About />} />
       </Routes>
     </div>
   );

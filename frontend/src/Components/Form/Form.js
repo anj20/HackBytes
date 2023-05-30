@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useGlobalContext } from "../../Context/GlobalContext";
+import { useGlobalContext } from "../../context/GlobalContext";
 import { plus } from "../utils/icons";
 
 function Form() {
