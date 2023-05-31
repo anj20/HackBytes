@@ -1,18 +1,19 @@
 import React from "react";
-import Hero from "./Components/Hero";
-import Dashboard from "./Components/Dashboard";
-import Navbar from "./Components/Navbar";
-import About from "./Components/About";
-import { useLocation, Routes, Route } from "react-router-dom";
-
+import { Routes, Route, useLocation } from "react-router-dom";
+import Navbar from "./Components/Home/Navbar";
+import About from "./Components/Home/About";
+import Hero from "./Components/Home/Hero";
+import DashComponent from "./DashComponent";
 const App = () => {
   return (
     <div>
-      {useLocation().pathname === "/" ? <Navbar /> : null}
+      {useLocation().pathname === "/" && <Navbar />}
+      {useLocation().pathname === "/about" && <Navbar />}
       <Routes>
         <Route path="/" element={<Hero />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/About" element={<About />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/dashboard" element={<DashComponent />} />
+        <Route path="*" element={<h1>Not Found</h1>} />
       </Routes>
     </div>
   );

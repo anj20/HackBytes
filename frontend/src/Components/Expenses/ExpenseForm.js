@@ -1,28 +1,29 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useGlobalContext } from "../../context/globalContext";
+import Button from "../Button/Button";
 import { plus } from "../../utils/Icons";
-import { GlobalProvider } from "../../context/globalContext";
 import axios from "axios";
 const BASE_URL = "http://localhost:5001/api/v1/";
 
-function Form() {
-  const [incomes, setIncomes] = useState([]);
+function ExpenseForm() {
   const [error, setError] = useState(null);
-  const { addIncome, getIncomes } = {
-    addIncome: async (income) => {
+  const [expenses, setExpenses] = useState([]);
+  const getExpenses = async () => {
+    const response = await axios.get(`${BASE_URL}get-expenses`);
+    setExpenses(response.data);
+    console.log(response.data);
+  };
+  const { addExpense } = {
+    addExpense: async (income) => {
       const response = await axios
-        .post(`${BASE_URL}add-income`, income)
+        .post(`${BASE_URL}add-expense`, income)
         .catch((err) => {
           setError(err.response.data.message);
         });
-      getIncomes();
-    },
-    getIncomes: async () => {
-      const response = await axios.get(`${BASE_URL}get-incomes`);
-      setIncomes(response.data);
-      console.log(response.data);
+      getExpenses();
     },
   };
   const [inputState, setInputState] = useState({
@@ -42,7 +43,7 @@ function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addIncome(inputState);
+    addExpense(inputState);
     setInputState({
       title: "",
       amount: "",
@@ -53,14 +54,14 @@ function Form() {
   };
 
   return (
-    <FormStyled onSubmit={handleSubmit}>
+    <ExpenseFormStyled onSubmit={handleSubmit}>
       {error && <p className="error">{error}</p>}
       <div className="input-control">
         <input
           type="text"
           value={title}
           name={"title"}
-          placeholder="Salary Title"
+          placeholder="Expense Title"
           onChange={handleInput("title")}
         />
       </div>
@@ -69,7 +70,7 @@ function Form() {
           value={amount}
           type="text"
           name={"amount"}
-          placeholder={"Salary Amount"}
+          placeholder={"Expense Amount"}
           onChange={handleInput("amount")}
         />
       </div>
@@ -95,13 +96,13 @@ function Form() {
           <option value="" disabled>
             Select Option
           </option>
-          <option value="salary">Salary</option>
-          <option value="freelancing">Freelancing</option>
-          <option value="investments">Investiments</option>
-          <option value="stocks">Stocks</option>
-          <option value="bitcoin">Bitcoin</option>
-          <option value="bank">Bank Transfer</option>
-          <option value="youtube">Youtube</option>
+          <option value="education">Education</option>
+          <option value="groceries">Groceries</option>
+          <option value="health">Health</option>
+          <option value="subscriptions">Subscriptions</option>
+          <option value="takeaways">Takeaways</option>
+          <option value="clothing">Clothing</option>
+          <option value="travelling">Travelling</option>
           <option value="other">Other</option>
         </select>
       </div>
@@ -117,13 +118,20 @@ function Form() {
         ></textarea>
       </div>
       <div className="submit-btn">
-        <button className="btn">{plus} Add Income</button>
+        <Button
+          name={"Add Expense"}
+          icon={plus}
+          bPad={".8rem 1.6rem"}
+          bRad={"30px"}
+          bg={"var(--color-accent"}
+          color={"#fff"}
+        />
       </div>
-    </FormStyled>
+    </ExpenseFormStyled>
   );
 }
 
-const FormStyled = styled.form`
+const ExpenseFormStyled = styled.form`
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -170,4 +178,4 @@ const FormStyled = styled.form`
     }
   }
 `;
-export default Form;
+export default ExpenseForm;
