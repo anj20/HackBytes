@@ -1,5 +1,5 @@
 import React from "react";
-import Auth0LoginButton from "./Auth0LoginButton";
+import Auth0LoginButton from "../Auth0LoginButton";
 
 const Navbar = () => {
   return (
@@ -51,7 +51,7 @@ const Navbar = () => {
           <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border rounded-lg bg-gray-100 md:flex-row md:space-x-8 md:mt-0 md:border-0 ">
             <li>
               <a
-                href="#"
+                href="/"
                 class="block py-2 pl-3 pr-4 md:p-0 nav-links"
                 aria-current="page"
               >
@@ -59,7 +59,10 @@ const Navbar = () => {
               </a>
             </li>
             <li>
-              <a href="#" class="block py-2 pl-3 pr-4 rounded md:p-0 nav-links">
+              <a
+                href="/about"
+                class="block py-2 pl-3 pr-4 rounded md:p-0 nav-links"
+              >
                 About
               </a>
             </li>

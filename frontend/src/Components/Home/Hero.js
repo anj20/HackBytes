@@ -1,9 +1,9 @@
 import React from "react";
 import { useEffect } from "react";
-import img from "../assets/Heroimg.svg";
 // data aos
 import AOS from "aos";
 import "aos/dist/aos.css";
+import img from "../../img/Heroimg.svg";
 const Hero = () => {
   useEffect(() => {
     AOS.init();
@@ -15,13 +15,13 @@ const Hero = () => {
           <div className="md:w-1/2 pr-4 pl-4">
             <div className="copy" data-aos="fade-up" data-aos-duration="3000">
               <div className="text-label">
-              Navigate Your Finances, Find Balance, and Flourish Financially!
+                Navigate Your Finances, Find Balance, and Flourish Financially!
               </div>
               <div className="text-hero-bold">
-              Empower Your Financial Journey with Dollar Sense.
+                Empower Your Financial Journey with Dollar Sense.
               </div>
               <div className="text-hero-regular">
-              The Key to Your Financial Success - Track, Budget, and Prosper!
+                The Key to Your Financial Success - Track, Budget, and Prosper!
               </div>
               <div className="cta">
                 <a

@@ -1,21 +1,42 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useGlobalContext } from "../context/GlobalContext";
-import { InnerLayout } from "../styles/Layouts";
-import Form from "./Form/Form";
-import IncomeItem from "./IncomeItem";
+// import { GlobalProvider } from "../../Context/GlobalContext";
+import { InnerLayout } from "../../styles/Layouts";
+import Form from "../Form/Form";
+import IncomeItem from "../IncomeItem";
+import axios from "axios";
+const BASE_URL = "http://localhost:5001/api/v1/";
 
 function Income() {
-  const { addIncome, incomes, getIncomes, deleteIncome, totalIncome } =
-    useGlobalContext();
-
+  const [incomes, setIncomes] = useState([]);
+  const [expenses, setExpenses] = useState([]);
+  const [error, setError] = useState(null);
+  // const { incomes, getIncomes, deleteIncome, totalIncome } =  GlobalProvider;
+  // console.log({ GlobalProvider });
+  const { getIncomes, deleteIncome, totalIncome } = {
+    getIncomes: async () => {
+      const response = await axios.get(`${BASE_URL}get-incomes`);
+      setIncomes(response.data);
+      console.log(response.data);
+    },
+    deleteIncome: async (id) => {
+      const res = await axios.delete(`${BASE_URL}delete-income/${id}`);
+      getIncomes();
+    },
+    totalIncome: () => {
+      let totalIncome = 0;
+      incomes.forEach((income) => {
+        totalIncome = totalIncome + income.amount;
+      });
+      return totalIncome;
+    },
+  };
   useEffect(() => {
     getIncomes();
   }, []);
   return (
-    <IncomeStyled>
+    <IncomeStyled className=" w-3/4">
       <InnerLayout>
-        <h1>Incomes</h1>
         <h2 className="total-income">
           Total Income: <span>${totalIncome()}</span>
         </h2>
