@@ -10,11 +10,12 @@ import { BsCurrencyDollar } from "react-icons/bs";
 function Dashboard() {
   const [incomes, setIncomes] = useState([]);
   const [expenses, setExpenses] = useState([]);
-  const [error, setError] = useState(null);
   const { totalExpenses, totalIncome, totalBalance, getIncomes, getExpenses } =
     {
       getIncomes: async () => {
-        const response = await axios.get(`${process.env.BASE_URL}get-incomes`);
+        const response = await axios.get(
+          `${process.env.REACT_APP_BASE_URL}get-incomes`
+        );
         setIncomes(response.data);
         console.log(response.data);
       },
@@ -29,7 +30,9 @@ function Dashboard() {
       },
 
       getExpenses: async () => {
-        const response = await axios.get(`${process.env.BASE_URL}get-expenses`);
+        const response = await axios.get(
+          `${process.env.REACT_APP_BASE_URL}get-expenses`
+        );
         setExpenses(response.data);
         console.log(response.data);
       },

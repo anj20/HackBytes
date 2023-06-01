@@ -11,14 +11,16 @@ function ExpenseForm() {
   const [error, setError] = useState(null);
   const [expenses, setExpenses] = useState([]);
   const getExpenses = async () => {
-    const response = await axios.get(`${process.env.BASE_URL}get-expenses`);
+    const response = await axios.get(
+      `${process.env.REACT_APP_BASE_URL}get-expenses`
+    );
     setExpenses(response.data);
     console.log(response.data);
   };
   const { addExpense } = {
     addExpense: async (income) => {
       const response = await axios
-        .post(`${process.env.BASE_URL}add-expense`, income)
+        .post(`${process.env.REACT_APP_BASE_URL}add-expense`, income)
         .catch((err) => {
           setError(err.response.data.message);
         });

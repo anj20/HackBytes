@@ -13,14 +13,16 @@ function Form() {
   const { addIncome, getIncomes } = {
     addIncome: async (income) => {
       const response = await axios
-        .post(`${process.env.BASE_URL}add-income`, income)
+        .post(`${process.env.REACT_APP_BASE_URL}add-income`, income)
         .catch((err) => {
           setError(err.response.data.message);
         });
       getIncomes();
     },
     getIncomes: async () => {
-      const response = await axios.get(`${process.env.BASE_URL}get-incomes`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_BASE_URL}get-incomes`
+      );
       setIncomes(response.data);
       console.log(response.data);
     },

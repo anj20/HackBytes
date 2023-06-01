@@ -1,33 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 import { dateFormat } from "../../utils/dateFormat";
-import { IoLogoBitcoin as bitcoin } from "react-icons/io";
-import {
-  AiOutlineBook as book,
-  AiOutlineCalendar as calender,
-  AiOutlineCreditCard as card,
-  AiFillCheckCircle as circle,
-} from "react-icons/ai";
-import { GiClothes as clothing } from "react-icons/gi";
-import {
-  BiDollar as dollar,
-  BiCommentDetail as comment,
-  BiDollar,
-  BiComment,
-  BiCommentDetail,
-} from "react-icons/bi";
-import { MdFoodBank as food } from "react-icons/md";
 
-import { SiFreelancer as freelance } from "react-icons/si";
-import { MdOutlineMedicalServices as medical } from "react-icons/md";
-import { FaMoneyBillAlt as money } from "react-icons/fa";
-import { GiPiggyBank as piggy } from "react-icons/gi";
-import { IoMdTrendingUp as stocks } from "react-icons/io";
-import { RiTakeawayLine as takeaway } from "react-icons/ri";
-import { FaTrash as trash } from "react-icons/fa";
-import { MdTv as tv } from "react-icons/md";
-import { FaUsers as users } from "react-icons/fa";
-import { FaYoutube as yt } from "react-icons/fa";
+import {
+  AiOutlineCalendar,
+  AiOutlineBook,
+  AiOutlineCreditCard,
+  AiFillCheckCircle,
+} from "react-icons/ai";
+import { GiClothes } from "react-icons/gi";
+import { BiDollar, BiCommentDetail } from "react-icons/bi";
+import { MdFoodBank, MdOutlineMedicalServices, MdTv } from "react-icons/md";
+import { SiFreelancer } from "react-icons/si";
+import { RiTakeawayLine } from "react-icons/ri";
+import { GiPiggyBank } from "react-icons/gi";
+import { IoMdTrendingUp } from "react-icons/io";
+import { FaMoneyBillAlt, FaTrash, FaYoutube } from "react-icons/fa";
 
 function IncomeItem({
   id,
@@ -43,46 +31,46 @@ function IncomeItem({
   const categoryIcon = () => {
     switch (category) {
       case "salary":
-        return money;
+        return <AiOutlineCalendar />;
       case "freelancing":
-        return freelance;
+        return <AiOutlineBook />;
       case "investments":
-        return stocks;
+        return <AiOutlineCreditCard />;
       case "stocks":
-        return users;
+        return <IoMdTrendingUp />;
       case "bitcoin":
-        return bitcoin;
+        return <FaMoneyBillAlt />;
       case "bank":
-        return card;
+        return <AiOutlineCreditCard />;
       case "youtube":
-        return { yt };
+        return <FaYoutube />;
       case "other":
-        return piggy;
+        return <GiPiggyBank />;
       default:
-        return "";
+        return null;
     }
   };
 
   const expenseCatIcon = () => {
     switch (category) {
       case "education":
-        return book;
+        return <AiOutlineBook />;
       case "groceries":
-        return food;
+        return <MdFoodBank />;
       case "health":
-        return medical;
+        return <MdOutlineMedicalServices />;
       case "subscriptions":
-        return tv;
+        return <MdTv />;
       case "takeaways":
-        return takeaway;
+        return <RiTakeawayLine />;
       case "clothing":
-        return clothing;
+        return <GiClothes />;
       case "travelling":
-        return freelance;
+        return <SiFreelancer />;
       case "other":
-        return circle;
+        return <AiFillCheckCircle />;
       default:
-        return "";
+        return null;
     }
   };
   return (
@@ -98,7 +86,7 @@ function IncomeItem({
               <BiDollar /> {amount}
             </p>
             <p>
-              {calender} {dateFormat(date)}
+              <AiOutlineCalendar /> {dateFormat(date)}
             </p>
             <p>
               <BiCommentDetail />
@@ -107,7 +95,7 @@ function IncomeItem({
           </div>
           <div className="btn-con">
             <button className="btn btn-primary" onClick={() => deleteItem(id)}>
-              {trash}
+              <FaTrash />
             </button>
           </div>
         </div>

@@ -8,19 +8,19 @@ import axios from "axios";
 
 function Income() {
   const [incomes, setIncomes] = useState([]);
-  const [expenses, setExpenses] = useState([]);
-  const [error, setError] = useState(null);
   // const { incomes, getIncomes, deleteIncome, totalIncome } =  GlobalProvider;
   // console.log({ GlobalProvider });
   const { getIncomes, deleteIncome, totalIncome } = {
     getIncomes: async () => {
-      const response = await axios.get(`${process.env.BASE_URL}get-incomes`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_BASE_URL}get-incomes`
+      );
       setIncomes(response.data);
       console.log(response.data);
     },
     deleteIncome: async (id) => {
       const res = await axios.delete(
-        `${process.env.BASE_URL}delete-income/${id}`
+        `${process.env.REACT_APP_BASE_URL}delete-income/${id}`
       );
       getIncomes();
     },

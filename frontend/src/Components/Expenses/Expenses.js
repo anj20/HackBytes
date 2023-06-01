@@ -9,14 +9,16 @@ function Expenses() {
   const [expenses, setExpenses] = useState([]);
   const { getExpenses, deleteExpense, totalExpenses } = {
     getExpenses: async () => {
-      const response = await axios.get(`${process.env.BASE_URL}get-expenses`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_BASE_URL}get-expenses`
+      );
       setExpenses(response.data);
       console.log(response.data);
     },
 
     deleteExpense: async (id) => {
       const res = await axios.delete(
-        `${process.env.BASE_URL}delete-expense/${id}`
+        `${process.env.REACT_APP_BASE_URL}delete-expense/${id}`
       );
       getExpenses();
     },
