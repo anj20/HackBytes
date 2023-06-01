@@ -1,7 +1,10 @@
 import React from "react";
 import Auth0LoginButton from "../Auth0/Auth0LoginButton";
+import Auth0LogoutButton from "../Auth0/Auth0LogoutButton";
 
 const Navbar = () => {
+
+  // console.log("isAuthenticated=", isAuthenticated);
   return (
     <nav class="sticky w-full z-20 navbar bg-gray-100">
       <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -15,6 +18,7 @@ const Navbar = () => {
         </a>
         <div class="flex md:order-2">
           <Auth0LoginButton value="Login" />
+          <Auth0LogoutButton value="Logout" />
           <button
             data-collapse-toggle="navbar-sticky"
             type="button"
@@ -58,6 +62,14 @@ const Navbar = () => {
                 class="block py-2 pl-3 pr-4 rounded md:p-0 nav-links"
               >
                 About
+              </a>
+            </li>
+            <li>
+              <a
+                href="/dashboard"
+                class="block py-2 pl-3 pr-4 rounded md:p-0 nav-links"
+              >
+                Dashboard
               </a>
             </li>
 

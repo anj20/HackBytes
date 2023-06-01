@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import styled from "styled-components";
+import avatar from "../../img/avatar.png";
 
 const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -9,15 +9,14 @@ const Profile = () => {
   if (isLoading) {
     return <div>Loading ...</div>;
   }
-
+  console.log(user.img);
   return (
     isAuthenticated && (
       <UserProfileStyled>
         <div className="user-con">
-          <img src={user.img} alt="" />
+          <img src={avatar} alt="" />
           <div className="text">
             <h2>{user.name}</h2>
-            <p>{user.email}</p>
           </div>
         </div>
       </UserProfileStyled>

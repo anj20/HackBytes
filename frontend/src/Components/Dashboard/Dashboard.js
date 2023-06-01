@@ -7,8 +7,6 @@ import Chart from "../Chart/Chart";
 import axios from "axios";
 import { BsCurrencyDollar } from "react-icons/bs";
 
-const BASE_URL = "http://localhost:5001/api/v1/";
-
 function Dashboard() {
   const [incomes, setIncomes] = useState([]);
   const [expenses, setExpenses] = useState([]);
@@ -16,7 +14,7 @@ function Dashboard() {
   const { totalExpenses, totalIncome, totalBalance, getIncomes, getExpenses } =
     {
       getIncomes: async () => {
-        const response = await axios.get(`${BASE_URL}get-incomes`);
+        const response = await axios.get(`${process.env.BASE_URL}get-incomes`);
         setIncomes(response.data);
         console.log(response.data);
       },
@@ -31,7 +29,7 @@ function Dashboard() {
       },
 
       getExpenses: async () => {
-        const response = await axios.get(`${BASE_URL}get-expenses`);
+        const response = await axios.get(`${process.env.BASE_URL}get-expenses`);
         setExpenses(response.data);
         console.log(response.data);
       },

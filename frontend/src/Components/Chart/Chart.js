@@ -17,7 +17,6 @@ import styled from "styled-components";
 import axios from "axios";
 
 import { dateFormat } from "../../utils/dateFormat";
-const BASE_URL = "http://localhost:5001/api/v1/";
 
 ChartJs.register(
   CategoryScale,
@@ -34,12 +33,12 @@ function Chart() {
   const [incomes, setIncomes] = useState([]);
   const [expenses, setExpenses] = useState([]);
   const getIncomes = async () => {
-    const response = await axios.get(`${BASE_URL}get-incomes`);
+    const response = await axios.get(`${process.env.BASE_URL}get-incomes`);
     setIncomes(response.data);
     console.log(response.data);
   };
   const getExpenses = async () => {
-    const response = await axios.get(`${BASE_URL}get-expenses`);
+    const response = await axios.get(`${process.env.BASE_URL}get-expenses`);
     setExpenses(response.data);
     console.log(response.data);
   };

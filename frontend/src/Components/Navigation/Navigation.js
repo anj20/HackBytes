@@ -1,21 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import avatar from "../../img/avatar.png";
 import { menuItems } from "../../utils/menuItems";
 import Auth0LogoutButton from "../Auth0/Auth0LogoutButton";
 import UserProfile from "../Auth0/UserProfile";
+import Auth0LoginButton from "../Auth0/Auth0LoginButton";
 
 function Navigation({ active, setActive }) {
   return (
     <NavStyled>
       <UserProfile />
-      <div className="user-con">
-        <img src={avatar} alt="" />
-        <div className="text">
-          <h2>Mike</h2>
-          <p>Your Money</p>
-        </div>
-      </div>
       <ul className="menu-items">
         {menuItems.map((item) => {
           return (
@@ -30,7 +23,8 @@ function Navigation({ active, setActive }) {
           );
         })}
       </ul>
-      <Auth0LogoutButton value="Signout" />
+      <Auth0LoginButton value="Login" />
+      <Auth0LogoutButton value="Logout" />
     </NavStyled>
   );
 }

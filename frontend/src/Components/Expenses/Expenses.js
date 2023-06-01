@@ -4,19 +4,20 @@ import { InnerLayout } from "../../styles/Layouts";
 import IncomeItem from "../Income/IncomeItem";
 import ExpenseForm from "./ExpenseForm";
 import axios from "axios";
-const BASE_URL = "http://localhost:5001/api/v1/";
 
 function Expenses() {
   const [expenses, setExpenses] = useState([]);
   const { getExpenses, deleteExpense, totalExpenses } = {
     getExpenses: async () => {
-      const response = await axios.get(`${BASE_URL}get-expenses`);
+      const response = await axios.get(`${process.env.BASE_URL}get-expenses`);
       setExpenses(response.data);
       console.log(response.data);
     },
 
     deleteExpense: async (id) => {
-      const res = await axios.delete(`${BASE_URL}delete-expense/${id}`);
+      const res = await axios.delete(
+        `${process.env.BASE_URL}delete-expense/${id}`
+      );
       getExpenses();
     },
     totalExpenses: () => {

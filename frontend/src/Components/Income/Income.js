@@ -5,7 +5,6 @@ import { InnerLayout } from "../../styles/Layouts";
 import Form from "../Form/Form";
 import IncomeItem from "./IncomeItem";
 import axios from "axios";
-const BASE_URL = "http://localhost:5001/api/v1/";
 
 function Income() {
   const [incomes, setIncomes] = useState([]);
@@ -15,12 +14,14 @@ function Income() {
   // console.log({ GlobalProvider });
   const { getIncomes, deleteIncome, totalIncome } = {
     getIncomes: async () => {
-      const response = await axios.get(`${BASE_URL}get-incomes`);
+      const response = await axios.get(`${process.env.BASE_URL}get-incomes`);
       setIncomes(response.data);
       console.log(response.data);
     },
     deleteIncome: async (id) => {
-      const res = await axios.delete(`${BASE_URL}delete-income/${id}`);
+      const res = await axios.delete(
+        `${process.env.BASE_URL}delete-income/${id}`
+      );
       getIncomes();
     },
     totalIncome: () => {

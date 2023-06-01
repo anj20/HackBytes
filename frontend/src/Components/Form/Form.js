@@ -5,7 +5,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import { AiFillPlusCircle as plus } from "react-icons/ai";
 import Button from "../Button/Button";
 import axios from "axios";
-const BASE_URL = "http://localhost:5001/api/v1/";
 
 function Form() {
   const [incomes, setIncomes] = useState([]);
@@ -14,14 +13,14 @@ function Form() {
   const { addIncome, getIncomes } = {
     addIncome: async (income) => {
       const response = await axios
-        .post(`${BASE_URL}add-income`, income)
+        .post(`${process.env.BASE_URL}add-income`, income)
         .catch((err) => {
           setError(err.response.data.message);
         });
       getIncomes();
     },
     getIncomes: async () => {
-      const response = await axios.get(`${BASE_URL}get-incomes`);
+      const response = await axios.get(`${process.env.BASE_URL}get-incomes`);
       setIncomes(response.data);
       console.log(response.data);
     },

@@ -6,20 +6,19 @@ import { useGlobalContext } from "../../context/globalContext";
 import Button from "../Button/Button";
 import { AiFillPlusCircle as plus } from "react-icons/ai";
 import axios from "axios";
-const BASE_URL = "http://localhost:5001/api/v1/";
 
 function ExpenseForm() {
   const [error, setError] = useState(null);
   const [expenses, setExpenses] = useState([]);
   const getExpenses = async () => {
-    const response = await axios.get(`${BASE_URL}get-expenses`);
+    const response = await axios.get(`${process.env.BASE_URL}get-expenses`);
     setExpenses(response.data);
     console.log(response.data);
   };
   const { addExpense } = {
     addExpense: async (income) => {
       const response = await axios
-        .post(`${BASE_URL}add-expense`, income)
+        .post(`${process.env.BASE_URL}add-expense`, income)
         .catch((err) => {
           setError(err.response.data.message);
         });
