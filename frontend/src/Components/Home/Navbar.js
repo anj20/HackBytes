@@ -72,7 +72,10 @@ const Navbar = () => {
               </a>
             </li>
             <li>
-              <a href="#" class="block py-2 pl-3 pr-4 rounded md:p-0 nav-links">
+              <a
+                href="/contact"
+                class="block py-2 pl-3 pr-4 rounded md:p-0 nav-links"
+              >
                 Contact
               </a>
             </li>
