@@ -5,6 +5,8 @@ import About from "./Components/Home/About";
 import Hero from "./Components/Home/Hero";
 import DashComponent from "./DashComponent";
 import Contact from "./Components/Home/Contact";
+import F404 from "./Components/Home/F404";
+
 const App = () => {
   return (
     <div>
@@ -16,7 +18,7 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/dashboard" element={<DashComponent />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="*" element={<h1>Not Found</h1>} />
+        <Route path="*" element={<F404 />} />
       </Routes>
     </div>
   );

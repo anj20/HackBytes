@@ -3,7 +3,7 @@ import styled from "styled-components";
 // import { GlobalProvider } from "../../Context/GlobalContext";
 import { InnerLayout } from "../../styles/Layouts";
 import Form from "../Form/Form";
-import IncomeItem from "../IncomeItem";
+import IncomeItem from "./IncomeItem";
 import axios from "axios";
 const BASE_URL = "http://localhost:5001/api/v1/";
 
@@ -34,8 +34,9 @@ function Income() {
   useEffect(() => {
     getIncomes();
   }, []);
+
   return (
-    <IncomeStyled className=" w-3/4">
+    <IncomeStyled>
       <InnerLayout>
         <h2 className="total-income">
           Total Income: <span>${totalIncome()}</span>
@@ -58,7 +59,7 @@ function Income() {
                   date={date}
                   type={type}
                   category={category}
-                  indicatorColor="var(--color-green)"
+                  indicatorColor="green"
                   deleteItem={deleteIncome}
                 />
               );
@@ -77,7 +78,7 @@ const IncomeStyled = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #fcf6f9;
+    background: #ffdead;
     border: 2px solid #ffffff;
     box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
     border-radius: 20px;
@@ -88,7 +89,7 @@ const IncomeStyled = styled.div`
     span {
       font-size: 2.5rem;
       font-weight: 800;
-      color: var(--color-green);
+      color: green;
     }
   }
   .income-content {

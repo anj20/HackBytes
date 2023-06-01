@@ -1,25 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useGlobalContext } from "../../context/globalContext";
 import { InnerLayout } from "../../styles/Layouts";
-import Form from "../Form/Form";
-import IncomeItem from "../IncomeItem/IncomeItem";
+import IncomeItem from "../Income/IncomeItem";
 import ExpenseForm from "./ExpenseForm";
 import axios from "axios";
 const BASE_URL = "http://localhost:5001/api/v1/";
+
 function Expenses() {
-  const [incomes, setIncomes] = useState([]);
   const [expenses, setExpenses] = useState([]);
-  const [error, setError] = useState(null);
-  const { addIncome, getExpenses, deleteExpense, totalExpenses } = {
-    //calculate incomes
-    addIncome: async (income) => {
-      const response = await axios
-        .post(`${BASE_URL}add-income`, income)
-        .catch((err) => {
-          setError(err.response.data.message);
-        });
-    },
+  const { getExpenses, deleteExpense, totalExpenses } = {
     getExpenses: async () => {
       const response = await axios.get(`${BASE_URL}get-expenses`);
       setExpenses(response.data);
@@ -46,10 +35,9 @@ function Expenses() {
   return (
     <ExpenseStyled>
       <InnerLayout>
-        <h1>Expenses</h1>
-        <h2 className="total-income">
+        <p className="total-income">
           Total Expense: <span>${totalExpenses()}</span>
-        </h2>
+        </p>
         <div className="income-content">
           <div className="form-container">
             <ExpenseForm />
@@ -58,7 +46,7 @@ function Expenses() {
             {expenses.map((income) => {
               const { _id, title, amount, date, category, description, type } =
                 income;
-              console.log(income);
+              console.log({ income });
               return (
                 <IncomeItem
                   key={_id}
@@ -69,7 +57,7 @@ function Expenses() {
                   date={date}
                   type={type}
                   category={category}
-                  indicatorColor="var(--color-green)"
+                  indicatorColor="red"
                   deleteItem={deleteExpense}
                 />
               );
@@ -82,13 +70,22 @@ function Expenses() {
 }
 
 const ExpenseStyled = styled.div`
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #915f6d;
+    font-weight: 700;
+  }
   display: flex;
   overflow: auto;
   .total-income {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #fcf6f9;
+    background: #ffdead;
     border: 2px solid #ffffff;
     box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
     border-radius: 20px;
@@ -99,7 +96,7 @@ const ExpenseStyled = styled.div`
     span {
       font-size: 2.5rem;
       font-weight: 800;
-      color: var(--color-green);
+      color: red;
     }
   }
   .income-content {

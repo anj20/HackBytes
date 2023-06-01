@@ -2,14 +2,15 @@ import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { plus } from "../../utils/Icons";
-import { GlobalProvider } from "../../context/globalContext";
+import { AiFillPlusCircle as plus } from "react-icons/ai";
+import Button from "../Button/Button";
 import axios from "axios";
 const BASE_URL = "http://localhost:5001/api/v1/";
 
 function Form() {
   const [incomes, setIncomes] = useState([]);
   const [error, setError] = useState(null);
+
   const { addIncome, getIncomes } = {
     addIncome: async (income) => {
       const response = await axios
@@ -117,7 +118,14 @@ function Form() {
         ></textarea>
       </div>
       <div className="submit-btn">
-        <button className="btn">{plus} Add Income</button>
+        <Button
+          name={"Add Income"}
+          icon={plus}
+          bPad={".8rem 1.6rem"}
+          bRad={"30px"}
+          bg={"#fff"}
+          color={"black"}
+        />
       </div>
     </FormStyled>
   );
@@ -164,8 +172,9 @@ const FormStyled = styled.form`
   .submit-btn {
     button {
       box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
+      background: #fff;
       &:hover {
-        background: var(--color-green) !important;
+        background: green !important;
       }
     }
   }

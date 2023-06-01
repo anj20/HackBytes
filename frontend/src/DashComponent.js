@@ -2,7 +2,6 @@ import React, { useState, useMemo } from "react";
 import styled from "styled-components";
 import bg from "./img/bg.png";
 import { MainLayout } from "./styles/Layouts";
-import Orb from "./Components/Orb/Orb";
 import Navigation from "./Components/Navigation/Navigation";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Income from "./Components/Income/Income";
@@ -11,9 +10,6 @@ import Expenses from "../src/Components/Expenses/Expenses";
 
 function DashComponent() {
   const [active, setActive] = useState(1);
-
-  // const global = useGlobalContext();
-  // console.log(global);
 
   const displayData = () => {
     switch (active) {
@@ -30,13 +26,8 @@ function DashComponent() {
     }
   };
 
-  const orbMemo = useMemo(() => {
-    return <Orb />;
-  }, []);
-
   return (
     <AppStyled bg={bg} className="App">
-      {orbMemo}
       <MainLayout>
         <Navigation active={active} setActive={setActive} />
         <main>{displayData()}</main>
@@ -47,11 +38,11 @@ function DashComponent() {
 
 const AppStyled = styled.div`
   height: 100vh;
-  background-image: url(${(props) => props.bg});
+  ${"" /* background-image: url(${(props) => props.bg}); */}
   position: relative;
   main {
     flex: 1;
-    background: rgba(252, 246, 249, 0.78);
+    background: #e6e6ed;
     border: 3px solid #ffffff;
     backdrop-filter: blur(4.5px);
     border-radius: 32px;

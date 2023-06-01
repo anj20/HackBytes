@@ -1,4 +1,7 @@
-import { dashboard, expenses, transactions, trend } from "./Icons";
+import { LuLayoutDashboard as dashboard } from "react-icons/lu";
+import { IoMdTrendingUp as expenses } from "react-icons/io";
+import { GrTransaction as transactions } from "react-icons/gr";
+import { TiArrowRepeat as trend } from "react-icons/ti";
 
 export const menuItems = [
   {

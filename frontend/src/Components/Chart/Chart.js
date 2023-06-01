@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Chart as ChartJs,
   CategoryScale,
@@ -14,7 +14,10 @@ import { useState } from "react";
 import { Line } from "react-chartjs-2";
 import styled from "styled-components";
 // import { useGlobalContext } from '../../context/globalContext'
+import axios from "axios";
+
 import { dateFormat } from "../../utils/dateFormat";
+const BASE_URL = "http://localhost:5001/api/v1/";
 
 ChartJs.register(
   CategoryScale,
@@ -30,6 +33,22 @@ ChartJs.register(
 function Chart() {
   const [incomes, setIncomes] = useState([]);
   const [expenses, setExpenses] = useState([]);
+  const getIncomes = async () => {
+    const response = await axios.get(`${BASE_URL}get-incomes`);
+    setIncomes(response.data);
+    console.log(response.data);
+  };
+  const getExpenses = async () => {
+    const response = await axios.get(`${BASE_URL}get-expenses`);
+    setExpenses(response.data);
+    console.log(response.data);
+  };
+
+  useEffect(() => {
+    getIncomes();
+    getExpenses();
+  }, []);
+
   const data = {
     labels: incomes.map((inc) => {
       const { date } = inc;

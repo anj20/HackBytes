@@ -4,7 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useGlobalContext } from "../../context/globalContext";
 import Button from "../Button/Button";
-import { plus } from "../../utils/Icons";
+import { AiFillPlusCircle as plus } from "react-icons/ai";
 import axios from "axios";
 const BASE_URL = "http://localhost:5001/api/v1/";
 
@@ -123,8 +123,8 @@ function ExpenseForm() {
           icon={plus}
           bPad={".8rem 1.6rem"}
           bRad={"30px"}
-          bg={"var(--color-accent"}
-          color={"#fff"}
+          bg={"#fff"}
+          color={"black"}
         />
       </div>
     </ExpenseFormStyled>
@@ -172,8 +172,9 @@ const ExpenseFormStyled = styled.form`
   .submit-btn {
     button {
       box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
+      background: white;
       &:hover {
-        background: var(--color-green) !important;
+        background: red !important;
       }
     }
   }

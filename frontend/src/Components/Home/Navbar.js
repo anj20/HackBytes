@@ -1,5 +1,5 @@
 import React from "react";
-import Auth0LoginButton from "../Auth0LoginButton";
+import Auth0LoginButton from "../Auth0/Auth0LoginButton";
 
 const Navbar = () => {
   return (
@@ -14,13 +14,7 @@ const Navbar = () => {
           <span class="navbar-brand">DollarSense</span>
         </a>
         <div class="flex md:order-2">
-          <Auth0LoginButton />
-          <button
-            type="button"
-            class="px-4 py-2 mr-3 md:mr-0 btn btn-primary md:btn-secondary"
-          >
-            Get started
-          </button>
+          <Auth0LoginButton value="Login" />
           <button
             data-collapse-toggle="navbar-sticky"
             type="button"
@@ -66,11 +60,7 @@ const Navbar = () => {
                 About
               </a>
             </li>
-            <li>
-              <a href="#" class="block py-2 pl-3 pr-4 rounded md:p-0 nav-links">
-                Services
-              </a>
-            </li>
+
             <li>
               <a
                 href="/contact"

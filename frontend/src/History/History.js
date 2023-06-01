@@ -2,6 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
 // import { useGlobalContext } from '../context/globalContext';
+import axios from "axios";
+import { useEffect } from "react";
+const BASE_URL = "http://localhost:5001/api/v1/";
 
 function History() {
   const [incomes, setIncomes] = useState([]);
@@ -16,6 +19,21 @@ function History() {
       return history.slice(0, 3);
     },
   };
+  const getExpenses = async () => {
+    const response = await axios.get(`${BASE_URL}get-expenses`);
+    setExpenses(response.data);
+    console.log(response.data);
+  };
+  const getIncomes = async () => {
+    const response = await axios.get(`${BASE_URL}get-incomes`);
+    setIncomes(response.data);
+    console.log(response.data);
+  };
+
+  useEffect(() => {
+    getIncomes();
+    getExpenses();
+  }, []);
 
   const [...history] = transactionHistory();
 
@@ -28,7 +46,7 @@ function History() {
           <div key={_id} className="history-item">
             <p
               style={{
-                color: type === "expense" ? "red" : "var(--color-green)",
+                color: type === "expense" ? "red" : "green",
               }}
             >
               {title}
@@ -36,12 +54,12 @@ function History() {
 
             <p
               style={{
-                color: type === "expense" ? "red" : "var(--color-green)",
+                color: type === "expense" ? "red" : "green",
               }}
             >
               {type === "expense"
-                ? `-${amount <= 0 ? 0 : amount}`
-                : `+${amount <= 0 ? 0 : amount}`}
+                ? `-$${amount <= 0 ? 0 : amount}`
+                : `+$${amount <= 0 ? 0 : amount}`}
             </p>
           </div>
         );
@@ -55,7 +73,7 @@ const HistoryStyled = styled.div`
   flex-direction: column;
   gap: 1rem;
   .history-item {
-    background: #fcf6f9;
+    background: #faf9f6;
     border: 2px solid #ffffff;
     box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
     padding: 1rem;

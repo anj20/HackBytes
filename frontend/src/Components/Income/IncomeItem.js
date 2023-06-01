@@ -1,27 +1,33 @@
 import React from "react";
 import styled from "styled-components";
-import { dateFormat } from "../utils/dateFormat";
+import { dateFormat } from "../../utils/dateFormat";
+import { IoLogoBitcoin as bitcoin } from "react-icons/io";
 import {
-  bitcoin,
-  book,
-  calender,
-  card,
-  circle,
-  clothing,
-  comment,
-  dollar,
-  food,
-  freelance,
-  medical,
-  money,
-  piggy,
-  stocks,
-  takeaway,
-  trash,
-  tv,
-  users,
-  yt,
-} from "../utils/Icons";
+  AiOutlineBook as book,
+  AiOutlineCalendar as calender,
+  AiOutlineCreditCard as card,
+  AiFillCheckCircle as circle,
+} from "react-icons/ai";
+import { GiClothes as clothing } from "react-icons/gi";
+import {
+  BiDollar as dollar,
+  BiCommentDetail as comment,
+  BiDollar,
+  BiComment,
+  BiCommentDetail,
+} from "react-icons/bi";
+import { MdFoodBank as food } from "react-icons/md";
+
+import { SiFreelancer as freelance } from "react-icons/si";
+import { MdOutlineMedicalServices as medical } from "react-icons/md";
+import { FaMoneyBillAlt as money } from "react-icons/fa";
+import { GiPiggyBank as piggy } from "react-icons/gi";
+import { IoMdTrendingUp as stocks } from "react-icons/io";
+import { RiTakeawayLine as takeaway } from "react-icons/ri";
+import { FaTrash as trash } from "react-icons/fa";
+import { MdTv as tv } from "react-icons/md";
+import { FaUsers as users } from "react-icons/fa";
+import { FaYoutube as yt } from "react-icons/fa";
 
 function IncomeItem({
   id,
@@ -49,7 +55,7 @@ function IncomeItem({
       case "bank":
         return card;
       case "youtube":
-        return yt;
+        return { yt };
       case "other":
         return piggy;
       default:
@@ -79,9 +85,6 @@ function IncomeItem({
         return "";
     }
   };
-
-  console.log("type", type);
-
   return (
     <IncomeItemStyled indicator={indicatorColor}>
       <div className="icon">
@@ -92,28 +95,20 @@ function IncomeItem({
         <div className="inner-content">
           <div className="text">
             <p>
-              {dollar} {amount}
+              <BiDollar /> {amount}
             </p>
             <p>
               {calender} {dateFormat(date)}
             </p>
             <p>
-              {comment}
+              <BiCommentDetail />
               {description}
             </p>
           </div>
           <div className="btn-con">
-            <button
-              className="btn btn-primary"
-              icon={trash}
-              bPad={"1rem"}
-              bRad={"50%"}
-              bg={"var(--primary-color"}
-              color={"#fff"}
-              iColor={"#fff"}
-              hColor={"var(--color-green)"}
-              onClick={() => deleteItem(id)}
-            />
+            <button className="btn btn-primary" onClick={() => deleteItem(id)}>
+              {trash}
+            </button>
           </div>
         </div>
       </div>
@@ -122,7 +117,7 @@ function IncomeItem({
 }
 
 const IncomeItemStyled = styled.div`
-  background: #fcf6f9;
+  background: #fffff0;
   border: 2px solid #ffffff;
   box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
   border-radius: 20px;
@@ -137,7 +132,6 @@ const IncomeItemStyled = styled.div`
     width: 80px;
     height: 80px;
     border-radius: 20px;
-    background: #f5f5f5;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -164,7 +158,6 @@ const IncomeItemStyled = styled.div`
         width: 0.8rem;
         height: 0.8rem;
         border-radius: 50%;
-        background: ${(props) => props.indicator};
       }
     }
     .inner-content {
@@ -179,7 +172,7 @@ const IncomeItemStyled = styled.div`
           display: flex;
           align-items: center;
           gap: 0.5rem;
-          color: var(--primary-color);
+          color: green;
           opacity: 0.8;
         }
       }

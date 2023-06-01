@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import img from "../../img/Heroimg.svg";
+import Auth0LoginButton from "../Auth0/Auth0LoginButton";
 const Hero = () => {
   useEffect(() => {
     AOS.init();
@@ -24,14 +25,9 @@ const Hero = () => {
                 The Key to Your Financial Success - Track, Budget, and Prosper!
               </div>
               <div className="cta">
+                <Auth0LoginButton value="Get Started" />
                 <a
-                  href="#"
-                  className="inline-block rounded py-1 px-3  btn btn-primary"
-                >
-                  Explore Now
-                </a>
-                <a
-                  href="#"
+                  href="/about"
                   className="inline-block rounded py-1 px-3 mx-2 btn btn-secondary"
                 >
                   Learn More
