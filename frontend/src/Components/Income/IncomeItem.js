@@ -82,14 +82,16 @@ function IncomeItem({
         <div className="inner-content">
           <div className="text">
             <p>
-              <BiDollar /> {amount}
+              <BiDollar />
+              {amount}
             </p>
             <p>
-              <AiOutlineCalendar /> {dateFormat(date)}
+              <AiOutlineCalendar />
+              {dateFormat(date)}
             </p>
             <p>
               <BiCommentDetail />
-              {description.length > 20
+              {description.length > 50
                 ? description.slice(0, 20) + "..."
                 : description}
             </p>

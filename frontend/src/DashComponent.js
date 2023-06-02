@@ -1,11 +1,9 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import bg from "./img/bg.png";
 import { MainLayout } from "./styles/Layouts";
 import Navigation from "./Components/Navigation/Navigation";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Income from "./Components/Income/Income";
-// import { useGlobalContext } from "./context/globalContext";
 import Expenses from "../src/Components/Expenses/Expenses";
 
 function DashComponent() {
@@ -27,7 +25,7 @@ function DashComponent() {
   };
 
   return (
-    <AppStyled bg={bg} className="App">
+    <AppStyled className="App">
       <MainLayout>
         <Navigation active={active} setActive={setActive} />
         <main>{displayData()}</main>
@@ -38,7 +36,6 @@ function DashComponent() {
 
 const AppStyled = styled.div`
   height: 100vh;
-  ${"" /* background-image: url(${(props) => props.bg}); */}
   position: relative;
   main {
     flex: 1;

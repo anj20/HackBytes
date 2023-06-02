@@ -4,7 +4,6 @@ import { useState } from "react";
 // import { useGlobalContext } from '../context/globalContext';
 import axios from "axios";
 import { useEffect } from "react";
-const BASE_URL = "http://localhost:5001/api/v1/";
 
 function History() {
   const [incomes, setIncomes] = useState([]);
@@ -20,12 +19,16 @@ function History() {
     },
   };
   const getExpenses = async () => {
-    const response = await axios.get(`${BASE_URL}get-expenses`);
+    const response = await axios.get(
+      `${process.env.REACT_APP_BASE_URL}get-expenses`
+    );
     setExpenses(response.data);
     console.log(response.data);
   };
   const getIncomes = async () => {
-    const response = await axios.get(`${BASE_URL}get-incomes`);
+    const response = await axios.get(
+      `${process.env.REACT_APP_BASE_URL}get-incomes`
+    );
     setIncomes(response.data);
     console.log(response.data);
   };

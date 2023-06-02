@@ -33,12 +33,16 @@ function Chart() {
   const [incomes, setIncomes] = useState([]);
   const [expenses, setExpenses] = useState([]);
   const getIncomes = async () => {
-    const response = await axios.get(`${process.env.BASE_URL}get-incomes`);
+    const response = await axios.get(
+      `${process.env.REACT_APP_BASE_URL}get-incomes`
+    );
     setIncomes(response.data);
     console.log(response.data);
   };
   const getExpenses = async () => {
-    const response = await axios.get(`${process.env.BASE_URL}get-expenses`);
+    const response = await axios.get(
+      `${process.env.REACT_APP_BASE_URL}get-expenses`
+    );
     setExpenses(response.data);
     console.log(response.data);
   };

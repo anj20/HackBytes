@@ -1,0 +1,18 @@
+{
+  "name": "dollarsense",
+  "version": "1.0.0",
+  "description": "Here, we give customers the tools they need to take charge of their money and plan their spending.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anj20/Finance_Tracker.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anj20/Finance_Tracker/issues"
+  },
+  "homepage": "https://github.com/anj20/Finance_Tracker#readme"
+}

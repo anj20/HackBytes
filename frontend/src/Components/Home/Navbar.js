@@ -11,7 +11,7 @@ const Navbar = () => {
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/" className="flex items-center">
           <img
-            src="https://flowbite.com/docs/images/logo.svg"
+            src="https://res.cloudinary.com/ddtzbznea/image/upload/v1685681143/Dollar__2_-removebg-preview_1_epcnw3.jpg"
             className="h-8 mr-2"
             alt="DollarSense"
           />
