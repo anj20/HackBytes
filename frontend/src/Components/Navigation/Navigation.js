@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { menuItems } from "../../utils/menuItems";
 import Auth0LogoutButton from "../Auth0/Auth0LogoutButton";

@@ -9,7 +9,7 @@ function Contact() {
   const postFeedback = (e) => {
     e.preventDefault();
     alert("Feedback Submitted");
-    fetch("http://localhost:5001/api/v1/add-feedback", {
+    fetch(`${process.env.REACT_APP_BASE_URL}add-feedback`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,7 +32,7 @@ function Contact() {
   const [message2, setMessage2] = useState("");
 
   const getFeedback = () => {
-    fetch("http://localhost:5001/api/v1/get-feedbacks", {
+    fetch(`${process.env.REACT_APP_BASE_URL}get-feedbacks`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -79,7 +79,6 @@ function Contact() {
                 id="name"
                 className="border-2 border-solid pl-2 text-[#616060] border-[black] h-8 rounded-md"
                 type="text"
-                placeholder="name"
               />
             </div>
             <div className="flex flex-col">
@@ -88,7 +87,6 @@ function Contact() {
                 id="email"
                 className="border-2 border-solid pl-2 text-[#616060] border-[black] h-8 rounded-md"
                 type="email"
-                placeholder="email"
               />
             </div>
             <div className="flex flex-col">
@@ -96,7 +94,6 @@ function Contact() {
               <textarea
                 id="message"
                 className="border-2 border-solid pl-2 text-[#616060] border-[black] resize-none h-24 rounded-md "
-                placeholder="message"
               />
             </div>
             <button
@@ -108,7 +105,6 @@ function Contact() {
             </button>
           </form>
         </div>
-        {/* </div> */}
       </div>
 
       <div className="flex flex-col mt-8 mb-8 ">

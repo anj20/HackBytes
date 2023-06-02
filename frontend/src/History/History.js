@@ -58,8 +58,8 @@ function History() {
               }}
             >
               {type === "expense"
-                ? `-$${amount <= 0 ? 0 : amount}`
-                : `+$${amount <= 0 ? 0 : amount}`}
+                ? `-$ ${amount <= 0 ? 0 : amount}`
+                : `+$ ${amount <= 0 ? 0 : amount}`}
             </p>
           </div>
         );

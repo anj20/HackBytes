@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-// import { GlobalProvider } from "../../Context/GlobalContext";
 import { InnerLayout } from "../../styles/Layouts";
 import Form from "../Form/Form";
 import IncomeItem from "./IncomeItem";
@@ -8,8 +7,6 @@ import axios from "axios";
 
 function Income() {
   const [incomes, setIncomes] = useState([]);
-  // const { incomes, getIncomes, deleteIncome, totalIncome } =  GlobalProvider;
-  // console.log({ GlobalProvider });
   const { getIncomes, deleteIncome, totalIncome } = {
     getIncomes: async () => {
       const response = await axios.get(

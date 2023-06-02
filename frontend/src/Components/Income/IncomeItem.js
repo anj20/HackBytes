@@ -31,53 +31,52 @@ function IncomeItem({
   const categoryIcon = () => {
     switch (category) {
       case "salary":
-        return <AiOutlineCalendar />;
+        return <AiOutlineCalendar className="icon" />;
       case "freelancing":
-        return <AiOutlineBook />;
+        return <AiOutlineBook className="icon" />;
       case "investments":
-        return <AiOutlineCreditCard />;
+        return <AiOutlineCreditCard className="icon" />;
       case "stocks":
-        return <IoMdTrendingUp />;
+        return <IoMdTrendingUp className="icon" />;
       case "bitcoin":
-        return <FaMoneyBillAlt />;
+        return <FaMoneyBillAlt className="icon" />;
       case "bank":
-        return <AiOutlineCreditCard />;
+        return <AiOutlineCreditCard className="icon" />;
       case "youtube":
-        return <FaYoutube />;
+        return <FaYoutube className="icon" />;
       case "other":
-        return <GiPiggyBank />;
+        return <GiPiggyBank className="icon" />;
       default:
-        return null;
+        return <AiOutlineCalendar className="icon" />;
     }
   };
 
   const expenseCatIcon = () => {
     switch (category) {
       case "education":
-        return <AiOutlineBook />;
+        return <AiOutlineBook className="icon" />;
       case "groceries":
-        return <MdFoodBank />;
+        return <MdFoodBank className="icon" />;
       case "health":
-        return <MdOutlineMedicalServices />;
+        return <MdOutlineMedicalServices className="icon" />;
       case "subscriptions":
-        return <MdTv />;
+        return <MdTv className="icon" />;
       case "takeaways":
-        return <RiTakeawayLine />;
+        return <RiTakeawayLine className="icon" />;
       case "clothing":
-        return <GiClothes />;
+        return <GiClothes className="icon" />;
       case "travelling":
-        return <SiFreelancer />;
+        return <SiFreelancer className="icon" />;
       case "other":
-        return <AiFillCheckCircle />;
+        return <AiFillCheckCircle className="icon" />;
       default:
-        return null;
+        return <AiOutlineCalendar className="icon" />;
     }
   };
+
   return (
     <IncomeItemStyled indicator={indicatorColor}>
-      <div className="icon">
-        {type === "expense" ? expenseCatIcon() : categoryIcon()}
-      </div>
+      {type === "expense" ? expenseCatIcon() : categoryIcon()}
       <div className="content">
         <h5>{title}</h5>
         <div className="inner-content">
@@ -90,7 +89,9 @@ function IncomeItem({
             </p>
             <p>
               <BiCommentDetail />
-              {description}
+              {description.length > 20
+                ? description.slice(0, 20) + "..."
+                : description}
             </p>
           </div>
           <div className="btn-con">
@@ -123,6 +124,7 @@ const IncomeItemStyled = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    background: #98fb98;
     border: 2px solid #ffffff;
     i {
       font-size: 2.6rem;

@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { AiFillPlusCircle as plus } from "react-icons/ai";
 import Button from "../Button/Button";
 import axios from "axios";
 
@@ -121,7 +120,7 @@ function Form() {
       <div className="submit-btn">
         <Button
           name={"Add Income"}
-          icon={plus}
+          icon={"plus"}
           bPad={".8rem 1.6rem"}
           bRad={"30px"}
           bg={"#fff"}
