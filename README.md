@@ -47,14 +47,14 @@ To run the Finance Tracker Website locally, follow these steps:
 4. Install the dependencies for the server:
    npm install
 
-5. Install the dependencies for the client:
-   cd client
+5. Install the dependencies for the frontend:
+   cd frontend
    npm install
 
 6. Create a .env file in the root of the project and add the necessary environment variables, including MongoDB connection string and Auth0 configuration details. Refer to the .env.example file for the required variables.
 
 7. Start the development server:
-   npm run dev
+   npm start
 
 
 # Feedback and Contributions
