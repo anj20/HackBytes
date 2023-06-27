@@ -4,31 +4,33 @@ import { InnerLayout } from "../../styles/Layouts";
 import Form from "../Form/Form";
 import IncomeItem from "./IncomeItem";
 import axios from "axios";
+import { useGlobalContext } from "../../context/globalContext";
 
 function Income() {
-  const [incomes, setIncomes] = useState([]);
-  const { getIncomes, deleteIncome, totalIncome } = {
-    getIncomes: async () => {
-      const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}get-incomes`
-      );
-      setIncomes(response.data);
-      console.log(response.data);
-    },
-    deleteIncome: async (id) => {
-      const res = await axios.delete(
-        `${process.env.REACT_APP_BASE_URL}delete-income/${id}`
-      );
-      getIncomes();
-    },
-    totalIncome: () => {
-      let totalIncome = 0;
-      incomes.forEach((income) => {
-        totalIncome = totalIncome + income.amount;
-      });
-      return totalIncome;
-    },
-  };
+  const { getIncomes, deleteIncome, totalIncome, incomes } = useGlobalContext();
+  // const [incomes, setIncomes] = useState([]);
+  // const { getIncomes, deleteIncome, totalIncome } = {
+  //   getIncomes: async () => {
+  //     const response = await axios.get(
+  //       `${process.env.REACT_APP_BASE_URL}get-incomes`
+  //     );
+  //     setIncomes(response.data);
+  //     console.log(response.data);
+  //   },
+  //   deleteIncome: async (id) => {
+  //     const res = await axios.delete(
+  //       `${process.env.REACT_APP_BASE_URL}delete-income/${id}`
+  //     );
+  //     getIncomes();
+  //   },
+  //   totalIncome: () => {
+  //     let totalIncome = 0;
+  //     incomes.forEach((income) => {
+  //       totalIncome = totalIncome + income.amount;
+  //     });
+  //     return totalIncome;
+  //   },
+  // };
   useEffect(() => {
     getIncomes();
   }, []);

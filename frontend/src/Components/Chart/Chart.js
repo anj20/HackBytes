@@ -13,7 +13,7 @@ import {
 import { useState } from "react";
 import { Line } from "react-chartjs-2";
 import styled from "styled-components";
-// import { useGlobalContext } from '../../context/globalContext'
+import { useGlobalContext } from "../../context/globalContext";
 import axios from "axios";
 
 import { dateFormat } from "../../utils/dateFormat";
@@ -30,22 +30,23 @@ ChartJs.register(
 );
 
 function Chart() {
-  const [incomes, setIncomes] = useState([]);
-  const [expenses, setExpenses] = useState([]);
-  const getIncomes = async () => {
-    const response = await axios.get(
-      `${process.env.REACT_APP_BASE_URL}get-incomes`
-    );
-    setIncomes(response.data);
-    console.log(response.data);
-  };
-  const getExpenses = async () => {
-    const response = await axios.get(
-      `${process.env.REACT_APP_BASE_URL}get-expenses`
-    );
-    setExpenses(response.data);
-    console.log(response.data);
-  };
+  const { incomes, expenses, getIncomes, getExpenses } = useGlobalContext();
+  // const [incomes, setIncomes] = useState([]);
+  // const [expenses, setExpenses] = useState([]);
+  // const getIncomes = async () => {
+  //   const response = await axios.get(
+  //     `${process.env.REACT_APP_BASE_URL}get-incomes`
+  //   );
+  //   setIncomes(response.data);
+  //   console.log(response.data);
+  // };
+  // const getExpenses = async () => {
+  //   const response = await axios.get(
+  //     `${process.env.REACT_APP_BASE_URL}get-expenses`
+  //   );
+  //   setExpenses(response.data);
+  //   console.log(response.data);
+  // };
 
   useEffect(() => {
     getIncomes();

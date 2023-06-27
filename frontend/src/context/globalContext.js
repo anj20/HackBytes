@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 
 const GlobalContext = React.createContext();
+const apiEndPoint = process.env.REACT_APP_BASE_URL;
 
 export const GlobalProvider = ({ children }) => {
   const [incomes, setIncomes] = useState([]);
@@ -11,7 +12,7 @@ export const GlobalProvider = ({ children }) => {
   //calculate incomes
   const addIncome = async (income) => {
     const response = await axios
-      .post(`${process.env.BASE_URL}add-income`, income)
+      .post(`${apiEndPoint}add-income`, income)
       .catch((err) => {
         setError(err.response.data.message);
       });
@@ -19,15 +20,13 @@ export const GlobalProvider = ({ children }) => {
   };
 
   const getIncomes = async () => {
-    const response = await axios.get(`${process.env.BASE_URL}get-incomes`);
+    const response = await axios.get(`${apiEndPoint}get-incomes`);
     setIncomes(response.data);
     console.log(response.data);
   };
 
   const deleteIncome = async (id) => {
-    const res = await axios.delete(
-      `${process.env.BASE_URL}delete-income/${id}`
-    );
+    const res = await axios.delete(`${apiEndPoint}delete-income/${id}`);
     getIncomes();
   };
 
@@ -43,7 +42,7 @@ export const GlobalProvider = ({ children }) => {
   //calculate incomes
   const addExpense = async (income) => {
     const response = await axios
-      .post(`${process.env.BASE_URL}add-expense`, income)
+      .post(`${apiEndPoint}add-expense`, income)
       .catch((err) => {
         setError(err.response.data.message);
       });
@@ -51,15 +50,13 @@ export const GlobalProvider = ({ children }) => {
   };
 
   const getExpenses = async () => {
-    const response = await axios.get(`${process.env.BASE_URL}get-expenses`);
+    const response = await axios.get(`${apiEndPoint}get-expenses`);
     setExpenses(response.data);
     console.log(response.data);
   };
 
   const deleteExpense = async (id) => {
-    const res = await axios.delete(
-      `${process.env.BASE_URL}delete-expense/${id}`
-    );
+    const res = await axios.delete(`${apiEndPoint}delete-expense/${id}`);
     getExpenses();
   };
 
@@ -110,5 +107,9 @@ export const GlobalProvider = ({ children }) => {
 };
 
 export const useGlobalContext = () => {
-  return useContext(GlobalContext);
+  const context = useContext(GlobalContext);
+  if (!context) {
+    throw new Error("useGlobalContext must be used within GlobalProvider");
+  }
+  return context;
 };

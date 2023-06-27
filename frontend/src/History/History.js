@@ -1,13 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { useState } from "react";
-// import { useGlobalContext } from '../context/globalContext';
-import axios from "axios";
+// import { useState } from "react";
+import { useGlobalContext } from "../context/globalContext";
+// import axios from "axios";
 import { useEffect } from "react";
 
 function History() {
-  const [incomes, setIncomes] = useState([]);
-  const [expenses, setExpenses] = useState([]);
+  // const [incomes, setIncomes] = useState([]);
+  // const [expenses, setExpenses] = useState([]);
+  const { incomes, expenses, getIncomes, getExpenses } = useGlobalContext();
   const { transactionHistory } = {
     transactionHistory: () => {
       const history = [...incomes, ...expenses];
@@ -18,20 +19,20 @@ function History() {
       return history.slice(0, 3);
     },
   };
-  const getExpenses = async () => {
-    const response = await axios.get(
-      `${process.env.REACT_APP_BASE_URL}get-expenses`
-    );
-    setExpenses(response.data);
-    console.log(response.data);
-  };
-  const getIncomes = async () => {
-    const response = await axios.get(
-      `${process.env.REACT_APP_BASE_URL}get-incomes`
-    );
-    setIncomes(response.data);
-    console.log(response.data);
-  };
+  // const getExpenses = async () => {
+  //   const response = await axios.get(
+  //     `${process.env.REACT_APP_BASE_URL}get-expenses`
+  //   );
+  //   setExpenses(response.data);
+  //   console.log(response.data);
+  // };
+  // const getIncomes = async () => {
+  //   const response = await axios.get(
+  //     `${process.env.REACT_APP_BASE_URL}get-incomes`
+  //   );
+  //   setIncomes(response.data);
+  //   console.log(response.data);
+  // };
 
   useEffect(() => {
     getIncomes();

@@ -1,53 +1,63 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import History from "../../History/History";
 import { InnerLayout } from "../../styles/Layouts";
 import Chart from "../Chart/Chart";
 import axios from "axios";
 import { BsCurrencyDollar } from "react-icons/bs";
+import { useGlobalContext } from "../../context/globalContext";
 
 function Dashboard() {
-  const [incomes, setIncomes] = useState([]);
-  const [expenses, setExpenses] = useState([]);
-  const { totalExpenses, totalIncome, getIncomes, getExpenses } = {
-    getIncomes: async () => {
-      const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}get-incomes`
-      );
-      setIncomes(response.data);
-      console.log(response.data);
-    },
+  // const [incomes, setIncomes] = useState([]);
+  // const [expenses, setExpenses] = useState([]);
+  const {
+    incomes,
+    expenses,
+    totalExpenses,
+    totalIncome,
+    getIncomes,
+    getExpenses,
+    totalBalance,
+  } = useGlobalContext();
+  // const { totalExpenses, totalIncome, getIncomes, getExpenses } = {
+  //   getIncomes: async () => {
+  //     const response = await axios.get(
+  //       `${process.env.REACT_APP_BASE_URL}get-incomes`
+  //     );
+  //     setIncomes(response.data);
+  //     console.log(response.data);
+  //   },
 
-    totalIncome: () => {
-      let totalIncome = 0;
-      incomes.forEach((income) => {
-        totalIncome = totalIncome + income.amount;
-      });
+  //   totalIncome: () => {
+  //     let totalIncome = 0;
+  //     incomes.forEach((income) => {
+  //       totalIncome = totalIncome + income.amount;
+  //     });
 
-      return totalIncome;
-    },
+  //     return totalIncome;
+  //   },
 
-    getExpenses: async () => {
-      const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}get-expenses`
-      );
-      setExpenses(response.data);
-      console.log(response.data);
-    },
+  //   getExpenses: async () => {
+  //     const response = await axios.get(
+  //       `${process.env.REACT_APP_BASE_URL}get-expenses`
+  //     );
+  //     setExpenses(response.data);
+  //     console.log(response.data);
+  //   },
 
-    totalExpenses: () => {
-      let totalIncome = 0;
-      expenses.forEach((income) => {
-        totalIncome = totalIncome + income.amount;
-      });
+  //   totalExpenses: () => {
+  //     let totalIncome = 0;
+  //     expenses.forEach((income) => {
+  //       totalIncome = totalIncome + income.amount;
+  //     });
 
-      return totalIncome;
-    },
+  //     return totalIncome;
+  //   },
 
-    totalBalance: () => {
-      return totalIncome() - totalExpenses();
-    },
-  };
+  //   totalBalance: () => {
+  //     return totalIncome() - totalExpenses();
+  //   },
+  // };
 
   useEffect(() => {
     getIncomes();

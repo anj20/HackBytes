@@ -3,34 +3,36 @@ import styled from "styled-components";
 import { InnerLayout } from "../../styles/Layouts";
 import IncomeItem from "../Income/IncomeItem";
 import ExpenseForm from "./ExpenseForm";
-import axios from "axios";
-
+// import axios from "axios";
+import { useGlobalContext } from "../../context/globalContext";
 function Expenses() {
-  const [expenses, setExpenses] = useState([]);
-  const { getExpenses, deleteExpense, totalExpenses } = {
-    getExpenses: async () => {
-      const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}get-expenses`
-      );
-      setExpenses(response.data);
-      console.log(response.data);
-    },
+  // const [expenses, setExpenses] = useState([]);
+  const { getExpenses, deleteExpense, totalExpenses, expenses } =
+    useGlobalContext();
+  // const { getExpenses, deleteExpense, totalExpenses } = {
+  //   getExpenses: async () => {
+  //     const response = await axios.get(
+  //       `${process.env.REACT_APP_BASE_URL}get-expenses`
+  //     );
+  //     setExpenses(response.data);
+  //     console.log(response.data);
+  //   },
 
-    deleteExpense: async (id) => {
-      const res = await axios.delete(
-        `${process.env.REACT_APP_BASE_URL}delete-expense/${id}`
-      );
-      getExpenses();
-    },
-    totalExpenses: () => {
-      let totalIncome = 0;
-      expenses.forEach((income) => {
-        totalIncome = totalIncome + income.amount;
-      });
+  //   deleteExpense: async (id) => {
+  //     const res = await axios.delete(
+  //       `${process.env.REACT_APP_BASE_URL}delete-expense/${id}`
+  //     );
+  //     getExpenses();
+  //   },
+  //   totalExpenses: () => {
+  //     let totalIncome = 0;
+  //     expenses.forEach((income) => {
+  //       totalIncome = totalIncome + income.amount;
+  //     });
 
-      return totalIncome;
-    },
-  };
+  //     return totalIncome;
+  //   },
+  // };
 
   useEffect(() => {
     getExpenses();

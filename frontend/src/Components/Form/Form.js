@@ -4,28 +4,30 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "../Button/Button";
 import axios from "axios";
+import { useGlobalContext } from "../../context/globalContext";
 
 function Form() {
-  const [incomes, setIncomes] = useState([]);
+  const { incomes, addIncome, getIncomes } = useGlobalContext();
+  // const [incomes, setIncomes] = useState([]);
   const [error, setError] = useState(null);
 
-  const { addIncome, getIncomes } = {
-    addIncome: async (income) => {
-      const response = await axios
-        .post(`${process.env.REACT_APP_BASE_URL}add-income`, income)
-        .catch((err) => {
-          setError(err.response.data.message);
-        });
-      getIncomes();
-    },
-    getIncomes: async () => {
-      const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}get-incomes`
-      );
-      setIncomes(response.data);
-      console.log(response.data);
-    },
-  };
+  // const { addIncome, getIncomes } = {
+  //   addIncome: async (income) => {
+  //     const response = await axios
+  //       .post(`${process.env.REACT_APP_BASE_URL}add-income`, income)
+  //       .catch((err) => {
+  //         setError(err.response.data.message);
+  //       });
+  //     getIncomes();
+  //   },
+  //   getIncomes: async () => {
+  //     const response = await axios.get(
+  //       `${process.env.REACT_APP_BASE_URL}get-incomes`
+  //     );
+  //     setIncomes(response.data);
+  //     console.log(response.data);
+  //   },
+  // };
   const [inputState, setInputState] = useState({
     title: "",
     amount: "",

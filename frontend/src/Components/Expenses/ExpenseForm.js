@@ -4,29 +4,30 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useGlobalContext } from "../../context/globalContext";
 import Button from "../Button/Button";
-import { AiFillPlusCircle as plus } from "react-icons/ai";
-import axios from "axios";
+// import { AiFillPlusCircle as plus } from "react-icons/ai";
+// import axios from "axios";
 
 function ExpenseForm() {
   const [error, setError] = useState(null);
-  const [expenses, setExpenses] = useState([]);
-  const getExpenses = async () => {
-    const response = await axios.get(
-      `${process.env.REACT_APP_BASE_URL}get-expenses`
-    );
-    setExpenses(response.data);
-    console.log(response.data);
-  };
-  const { addExpense } = {
-    addExpense: async (income) => {
-      const response = await axios
-        .post(`${process.env.REACT_APP_BASE_URL}add-expense`, income)
-        .catch((err) => {
-          setError(err.response.data.message);
-        });
-      getExpenses();
-    },
-  };
+  const { addExpense } = useGlobalContext();
+  // const [expenses, setExpenses] = useState([]);
+  // const getExpenses = async () => {
+  //   const response = await axios.get(
+  //     `${process.env.REACT_APP_BASE_URL}get-expenses`
+  //   );
+  //   setExpenses(response.data);
+  //   console.log(response.data);
+  // };
+  // const { addExpense } = {
+  //   addExpense: async (income) => {
+  //     const response = await axios
+  //       .post(`${process.env.REACT_APP_BASE_URL}add-expense`, income)
+  //       .catch((err) => {
+  //         setError(err.response.data.message);
+  //       });
+  //     getExpenses();
+  //   },
+  // };
   const [inputState, setInputState] = useState({
     title: "",
     amount: "",
