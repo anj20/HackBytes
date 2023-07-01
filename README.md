@@ -1,5 +1,5 @@
 
-# Dollar Sense 
+# Finance App
 
 This is a web application designed to assist users in effectively tracking their income and expenses. The Finance Tracker website contains tools for managing financial transactions, classifying income and expenses, and generating reports. The application is developed with Node.js, MongoDB, React, and Tailwind CSS, and Auth0 is used for authentication.
 
