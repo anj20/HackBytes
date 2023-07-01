@@ -6,8 +6,7 @@ const apiEndPoint = process.env.REACT_APP_BASE_URL;
 
 export const GlobalProvider = ({ children }) => {
   const [incomes, setIncomes] = useState([]);
-  const [expenses, setExpenses] = useState([]);
-  const [error, setError] = useState(null);
+  const [expenses, setExpenses] = useState([])  const [error, setError] = useState(null);
 
   //calculate incomes
   const addIncome = async (income) => {
